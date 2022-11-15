@@ -1,4 +1,4 @@
-const buttonCounter = document.getElementById("button-counter");
+/*const buttonCounter = document.getElementById("button-counter");
 const counterView = document.getElementById("counter-view");
 
 console.log(buttonCounter);
@@ -33,4 +33,22 @@ insideMouse.addEventListener("mouseenter", () => {
 
 insideMouse.addEventListener("mouseleave", () => {
     insideMouse.style.backgroundColor = "red";
+})*/
+
+//practice checkbox
+const listItems = document.getElementById("list-items");
+const buttonForm = document.getElementById("button-form");
+const inputsCheckbox = document.querySelectorAll(".inputs-checkbox")
+
+buttonForm.addEventListener("click", () =>{
+    //console.log("event", event);
+    listItems.innerHTML = "";
+    inputsCheckbox.forEach((inputCheckbox) =>{
+        if(inputCheckbox.checked){
+            console.log(inputCheckbox);
+            const li = document.createElement("li");
+            li.textContent = inputCheckbox.value;
+            listItems.appendChild(li)
+        }        
+    });
 })
