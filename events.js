@@ -231,7 +231,7 @@ const users = [
     },
 ];
 
-/*const buttonCounter = document.getElementById("button-counter");
+const buttonCounter = document.getElementById("button-counter");
 const counterView = document.getElementById("counter-view");
 
 console.log(buttonCounter);
@@ -284,7 +284,7 @@ buttonForm.addEventListener("click", () =>{
             listItems.appendChild(li)
         }        
     });
-})*/
+})
 
 
 const userList = document.getElementById("user-list");
@@ -301,23 +301,43 @@ renderUsers();
 
 
 
-const animals = ["perro", "gato", "conejo", "tortuga", "Alojote", "pinguino", "carpincho", "loro", "cobayo", "foca", "tero", "oso polar", "elefante", "hornero"]
+const animals = [
+    "perro", "gato", "conejo", "tortuga", "Ajolote", "pingüino", "carpincho", "Loro", "cobayo", "foca", "atún", "Oso Polar", "mantarraya", "dragón", "elefante", "tero", "Puerco Espin", "panda", "quirquincho"
+]
 
-const inputSearchAnimals = document.getElementById("input-search-animal");
+const inputSearchAnimal = document.getElementById("input-search-animal");
+console.log("inputSearchAnimals", inputSearchAnimal)
+
+
 const animalList = document.getElementById("animal-list");
 
-inputSearchAnimals.addEventListener("keyup",(event)=>{
-    console.log("event",event); //Devuelve todo el evento de la tecla presionada
-    console.log("event.target.value", event.target.value); //devuelve el contenido del input
-    console.log("event.key", event.key); //Devuelve la tecla presionada
-})
 
-const renderAnimals = () =>{
-    animals.map((animal) =>{
+const renderAnimals = () => {
+    animals.map((animal) => {
         const animalItem = document.createElement("li");
+        animalItem.classList.add("animal-item");
         animalItem.textContent = animal;
         animalList.appendChild(animalItem);
-        console.log(animal);
-    }
-)};
+    });
+};
 renderAnimals();
+
+
+const animalListItems = document.querySelectorAll(".animal-item");
+console.log("animalListItems", animalListItems);
+inputSearchAnimal.addEventListener("keyup", (event) => {
+    // console.log("event", event) // Devuelve todo el evento de la tecla presionada
+    console.log("event.target.value", event.target.value) // Devuelve contenido del input
+    // console.log("event.key", event.key) // Devuelve la tecla presionada
+    // console.log({ animalListItems }) // Funciona OK ✔️
+    animalListItems.forEach((animalItem) => {
+        // console.log("veamos el animalito", animalItem.textContent) // Funciona OK ✔️
+        animalItem.textContent
+            .toLowerCase()
+            .includes(event.target.value.toLowerCase())
+            ? animalItem.classList.remove("hidden") // Si cae en true la sentencia anterior, ocurre esto
+            : animalItem.classList.add("hidden");  // Si cae en false la sentencia anterior, ocurre esto
+        // SI NO ENCUENTRA RESULTADOS; ESTARÍA RE BUENO MOSTRAR UN MENSAJE EN LA PANTALLA
+        
+    })
+})
