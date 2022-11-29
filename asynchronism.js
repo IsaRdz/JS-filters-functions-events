@@ -27,7 +27,7 @@ setTimeout(() =>{
 },3000)*/
 //Output expected: 1, 2, 3 - De acuerdo a los tiempos de cada setTimeout()
 
-console.log("1");
+/*console.log("1");
 setTimeout(() => {
     console.log("2")
 }, 5000);
@@ -49,17 +49,17 @@ const getUser = (id) => {
     .then(response =>  response.json())
     .then(data => console.log("data",data))
 }
-getUser()
+getUser()*/
 
 //Promise using async await
-const getUserAsync = async() =>{
+/*const getUserAsync = async() =>{
     const getFetch = await fetch(API_URL) //await funciona como .then... espera que se resuelva para ejecutar
     console.log("getFetch", getFetch)
     const getData = await getFetch.json()
     console.log("getData", getData)
     //showDataInDom(getData)
 }
-getUserAsync()
+getUserAsync()*/
 
 /*const showDataInDom = (getData) =>{
     //Escribo lo que quiero renderizar en el DOM
@@ -129,3 +129,49 @@ const getEventsWithAxios = async() => {
     console.log("dataAxios", dataEvents)
 }
 getEventsWithAxios()
+
+const API_URL_GET_PRODUCTS = "https://fakestoreapi.com/products"
+
+/** 
+*@param no use
+*@returns return an array of products
+*/
+
+const getProducts = async() =>{
+    try{
+        const responseAxios = await axios.get("https://fakestoreapi.com/products")
+        const dataProducts = await responseAxios.data
+        console.log("dataProducts", dataProducts)
+        return dataProducts;
+    }catch (error) {
+        console.log("Error status", error.response.status)
+        //alert(error.message)
+        if (error.response.status == 404 ) {
+            alert("La url consultada parece no estar funcionando") 
+        } 
+    }
+
+    //console.info("responseAxios",responseAxios)
+}
+getProducts()
+
+const functionToFail = null
+const someFunction = () =>{
+    const gretting = "Hello Devs"
+    
+    try{
+        console.log("Esto se ejecuta antes de que falle la función")
+        //functionToFail()
+        console.log("gretting",gretting)
+    }catch(error) {
+        console.log("Esto  se ejecuta si la función falla")
+        console.log("error",error)
+        console.log("error message:", error.message)
+        console.log("error name:", error.name)
+    } finally{
+        console.log("Esto se ejecuta al final de la función")
+    }
+    return gretting;
+
+}
+console.log(someFunction())
