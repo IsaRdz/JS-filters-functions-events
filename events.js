@@ -299,8 +299,6 @@ const renderUsers = () =>{
 )};
 renderUsers();
 
-
-
 const animals = [
     "perro", "gato", "conejo", "tortuga", "Ajolote", "pingüino", "carpincho", "Loro", "cobayo", "foca", "atún", "Oso Polar", "mantarraya", "dragón", "elefante", "tero", "Puerco Espin", "panda", "quirquincho"
 ]
@@ -308,9 +306,7 @@ const animals = [
 const inputSearchAnimal = document.getElementById("input-search-animal");
 console.log("inputSearchAnimals", inputSearchAnimal)
 
-
 const animalList = document.getElementById("animal-list");
-
 
 const renderAnimals = () => {
     animals.map((animal) => {

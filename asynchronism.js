@@ -57,11 +57,75 @@ const getUserAsync = async() =>{
     console.log("getFetch", getFetch)
     const getData = await getFetch.json()
     console.log("getData", getData)
-    showDataInDom(getData)
+    //showDataInDom(getData)
 }
 getUserAsync()
 
-const showDataInDom = (getData) =>{
+/*const showDataInDom = (getData) =>{
     //Escribo lo que quiero renderizar en el DOM
 }
-showDataInDom(getData)
+showDataInDom(getData)*/
+
+const API_URL_EVENTS = "https://amazing-events.herokuapp.com/api/events"
+
+/*const getEvents = async() =>{
+    const getFetch = await fetch(API_URL_EVENTS);
+    console.log("getFetch", getFetch)
+    const dataEvents = await getFetch.json()
+    console.log("dataEvents",dataEvents)
+
+    //Utilizamos spreed operator para agregarle nueva key a la respuesta de la API
+    const newData = {
+        ...dataEvents,
+        havePerrito: false,
+    };
+
+    eventsInDom(dataEvents);
+}
+getEvents()*/
+
+/*const eventsInDom = (dataEvents) => {
+    //const events = dataEvents.events
+    //const currenteDate = dataEvents.currenteDate
+
+    //STRUCTURING
+
+    //const { events } = dataEvents // output - es el array de los eventos
+    //const { currenteDate } = dataEvents //el nombre de la const debe ser igual a la key para que lo tome, sino sera undefined
+    const { tuki } = dataEvents // output - undefined porque NO es una key definida en dataEvents
+
+    //DESTRUCTURING
+    const { events, currenteDate, havePerrito } = dataEvents
+
+    console.log("Información para pintar en el dom", dataEvents)
+    console.log("events", events)
+    console.log("currenteDate", currenteDate)
+    console.log("tuki", tuki)
+    console.log("Tiene perrito?", havePerrito)
+}*/
+
+//DESTRUCTURING OPCION 2
+/*const eventsInDom = ({ events, currenteDate, havePerrito }) => {
+    
+    console.log("events", events)
+    console.log("currenteDate", currenteDate)
+    console.log("Tiene perrito?", havePerrito)
+}*/
+
+//TRES FORMAS DE HACER PETICIONES ASINCRONAS
+/*
+Opcion 1: Fetch + .then()
+Opcion 2: Fetch + Async/await
+Opcion 3: Librería Axios  + Async/await
+https://axios-http.com/
+
+*/
+
+const getEventsWithAxios = async() => {
+    //Llamamos a la libreria e le indicamos el verbo HTTP que queremos utilizar
+    const getDataAxios = await axios.get(API_URL_EVENTS)
+    const dataEvents = getDataAxios.data
+    console.log("getDataAxios", getDataAxios)
+    console.log("dataAxios", dataEvents)
+}
+getEventsWithAxios()
